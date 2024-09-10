@@ -1,0 +1,364 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1a2e;
+    color: #eaeaea;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Evita barra de rolagem */
+    font-size: 12px; /* Reduz o tamanho da fonte geral */
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    height: 100vh; /* Ajusta para altura total da tela */
+    height: calc(100vh - 80px);
+    margin-top: 20px;
+}   
+
+.panel {
+    background-color: #2a2a3c;
+    border-radius: 10px;
+    padding: 15px;
+    width: 45%;
+    height: 95vh; /* Define a altura fixa para ambos os painéis */
+    box-sizing: border-box;
+    box-shadow: 0 1px 4px rgba(97, 26, 191, 0.956);
+}
+
+.panel h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 14px; /* Reduz o tamanho da fonte do título */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+form label {
+    display: block;
+    margin-top: 5px;
+    font-size: 15px; /* Reduz o tamanho da fonte das labels */
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    margin-top: 4px; /* Reduz o espaço superior */
+    padding: 6px; /* Reduz o padding interno */
+    border-radius: 4px; /* Reduz o border-radius */
+    border: none;
+    font-size: 12px; /* Reduz o tamanho da fonte dos campos */
+}
+
+form button {
+    margin-top: 8px; /* Reduz o espaçamento superior */
+    padding: 8px; /* Reduz o padding */
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #3a3a5c;
+    color: #eaeaea;
+    font-size: 12px; /* Reduz o tamanho da fonte do botão */
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #4a4a6c;
+}
+
+.status-list {
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden; /* Remove a barra de rolagem horizontal */
+}
+
+.atendimento-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px; /* Reduz o padding */
+    margin-top: 8px;
+    background-color: #3a3a5c;
+    border-radius: 5px;
+    font-size: 12px; /* Reduz o tamanho da fonte */
+    transition: background-color 0.3s;
+}
+
+.atendimento-item:hover {
+    background-color: #4a4a6c;
+}
+
+.atendimento-item p {
+    margin: 0;
+    font-size: 12px; /* Reduz o tamanho da fonte */
+}
+
+.atendimento-item span {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+/* Animação para o botão de finalizar */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+.finalizar-btn {
+    background-color: #ff4c4c;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 8px;
+    cursor: pointer;
+    margin-right: 8px;
+    font-size: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.finalizar-btn:hover {
+    background-color: #ff1f1f;
+}
+
+/* Animação ao clicar para finalizar */
+.finalizar-animacao {
+    animation: fadeOut 0.5s forwards;
+}
+
+/* Efeito para os itens de atendimento */
+/* Ajuste a largura dos itens de atendimento para evitar a barra de rolagem horizontal */
+.atendimento-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    margin-top: 8px;
+    background-color: #3a3a5c;
+    border-radius: 5px;
+    font-size: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+    width: calc(100% - 16px); /* Reduz a largura para evitar a barra de rolagem */
+    box-sizing: border-box; /* Garante que o padding e a borda sejam incluídos na largura */
+}
+
+/* Efeito para os itens de atendimento ao passar o mouse */
+.atendimento-item:hover {
+    background-color: #4a4a6c;
+    transform: scale(1.02);
+}
+
+/* Ajuste para o painel de status para evitar barra de rolagem horizontal */
+.status-list {
+    max-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden; /* Remove a barra de rolagem horizontal */
+}
+
+/* Efeito para o botão de adicionar atendimento */
+#addAtendimentoBtn {
+    margin-top: 8px; /* Espaçamento superior */
+    padding: 8px; /* Padding */
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #3a3a5c;
+    color: #eaeaea;
+    font-size: 12px; /* Reduz o tamanho da fonte do botão */
+    transition: background-color 0.3s, transform 0.3s; /* Adiciona uma transição suave */
+}
+
+#addAtendimentoBtn:hover {
+    background-color: #4a4a6c; /* Cor de fundo ao passar o mouse */
+    transform: scale(1.02); /* Leve aumento do tamanho */
+}
+
+/* Estilo do Modal */
+.modal {
+    display: none; /* Oculta o modal por padrão */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #2a2a3c;
+    color: #eaeaea;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.modal-content p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.modal-content button {
+    background: #3a3a5c;
+    color: #eaeaea;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+    background-color: #4a4a6c;
+}
+
+.modal-content #confirmarFinalizacao {
+    background: #ff4c4c;
+}
+
+.modal-content #confirmarFinalizacao:hover {
+    background-color: #ff1f1f;
+}
+
+.finalizado-btn {
+    background-color: #4caf50; /* Verde */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 8px;
+    cursor: not-allowed; /* Altera o cursor para indicar que o botão está desativado */
+    margin-right: 8px;
+    font-size: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.finalizado-btn:hover {
+    background-color: #45a049; /* Verde escuro quando o mouse está sobre o botão */
+}
+
+/* Estilos do modal de confirmação */
+#confirmacaoModal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+#confirmacaoBox {
+    background-color: #1a1a2e;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(97, 26, 191, 0.956);
+}
+
+#confirmacaoBox h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+#confirmacaoBox button {
+    background-color: #007bff;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#confirmacaoBox #cancelarBtn {
+    background-color: #6c757d;
+}
+
+#confirmacaoBox button:hover {
+    opacity: 0.8;
+}
+
+/* Estilos para o botão "Finalizado" */
+.finalizado-btn {
+    background-color: #4caf50; /* Verde */
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 5px 8px;
+    cursor: not-allowed; /* Altera o cursor para indicar que o botão está desativado */
+    margin-right: 8px;
+    font-size: 12px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.finalizado-btn:hover {
+    background-color: #45a049; /* Verde escuro quando o mouse está sobre o botão */
+}
+
+/* Estilo para os campos de preenchimento */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+    background-color: #3a3a5c; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: 1px solid #555; /* Borda opcional para contraste */
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    height: auto; /* Mantém a altura padrão */
+}
+
+/* Corrigindo a cor de fundo do campo de data */
+input[type="date"]::-webkit-datetime-edit,
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-clear-button {
+    color: white;
+    background-color: #3a3a5c; /* Cor de fundo do campo de data */
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Ajusta a cor do ícone do calendário */
+}
+
+/* Estilo para o texto de placeholder */
+input::placeholder,
+textarea::placeholder {
+    color: #b0b0b0; /* Cor mais clara para o placeholder */
+    opacity: 1; /* Garante que a cor do placeholder seja exibida corretamente */
+}
+
+/* Ajustes no hover e focus dos campos */
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #6a6a8c; /* Borda de cor diferente no foco */
+    box-shadow: 0 0 5px rgba(106, 106, 140, 0.5); /* Sombra para indicar foco */
+}

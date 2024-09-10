@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Atendimento</title>
+    <link rel="stylesheet" href="MCD.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Painel de Ocorrência -->
+        <div class="panel">
+            <h2>PREENCHER OCORRÊNCIA</h2>
+            <form id="atendimentoForm">
+                <!-- Campos do formulário -->
+                <label for="dataHora">Data/Hora:</label>
+                <input type="datetime-local" id="dataHora" name="dataHora">
+
+                <label for="tipoVeiculo">Tipo de Veículo:</label>
+                <select id="tipoVeiculo" name="tipoVeiculo" onchange="updateMarcaOptions()">
+                    <option value="">Selecione</option>
+                    <option value="CAVALO">Cavalo</option>
+                    <option value="CARRETA">Carreta</option>
+                </select>
+
+                <label for="marca">Marca:</label>
+                <select id="marca" name="marca">
+                    <option value="">Selecione o Tipo de Veículo Primeiro</option>
+                </select>
+
+                <label for="placa">Placa:</label>
+                <input type="text" id="placa" name="placa" maxlength="8" oninput="formatarPlaca(this)">
+
+                <label for="localizacaoAtual">Localização Atual:</label>
+                <select id="localizacaoAtual" name="localizacaoAtual">
+                    <option value="Rio Branco AC">Rio Branco AC</option>
+                        <option value="Maceió AL">Maceió AL</option>
+                        <option value="Macapá AP">Macapá AP</option>
+                        <option value="Manaus AM">Manaus AM</option>
+                        <option value="Salvador BA">Salvador BA</option>
+                        <option value="Fortaleza CE">Fortaleza CE</option>
+                        <option value="Brasília DF">Brasília DF</option>
+                        <option value="Vitória ES">Vitória ES</option>
+                        <option value="Goiânia GO">Goiânia GO</option>
+                        <option value="São Luís MA">São Luís MA</option>
+                        <option value="Cuiabá MT">Cuiabá MT</option>
+                        <option value="Campo Grande MS">Campo Grande MS</option>
+                        <option value="Belo Horizonte MG">Belo Horizonte MG</option>
+                        <option value="Belém PA">Belém PA</option>
+                        <option value="João Pessoa PB">João Pessoa PB</option>
+                        <option value="Curitiba PR">Curitiba PR</option>
+                        <option value="Recife PE">Recife PE</option>
+                        <option value="Teresina PI">Teresina PI</option>
+                        <option value="Rio de Janeiro RJ">Rio de Janeiro RJ</option>
+                        <option value="Natal RN">Natal RN</option>
+                        <option value="Porto Alegre RS">Porto Alegre RS</option>
+                        <option value="Porto Velho RO">Porto Velho RO</option>
+                        <option value="Boa Vista RR">Boa Vista RR</option>
+                        <option value="Florianópolis SC">Florianópolis SC</option>
+                        <option value="São Paulo SP">São Paulo SP</option>
+                        <option value="Aracaju SE">Aracaju SE</option>
+                        <option value="Palmas TO">Palmas TO</option>
+
+                </select>
+                <label for="destino">Destino:</label>
+                <select id="destino" name="destino">
+                    <option value="Maceió AL">Maceió AL</option>
+                    <option value="Macapá AP">Macapá AP</option>
+                    <option value="Manaus AM">Manaus AM</option>
+                    <option value="Salvador BA">Salvador BA</option>
+                    <option value="Fortaleza CE">Fortaleza CE</option>
+                    <option value="Brasília DF">Brasília DF</option>
+                    <option value="Vitória ES">Vitória ES</option>
+                    <option value="Goiânia GO">Goiânia GO</option>
+                    <option value="São Luís MA">São Luís MA</option>
+                    <option value="Cuiabá MT">Cuiabá MT</option>
+                    <option value="Campo Grande MS">Campo Grande MS</option>
+                    <option value="Belo Horizonte MG">Belo Horizonte MG</option>
+                    <option value="Belém PA">Belém PA</option>
+                    <option value="João Pessoa PB">João Pessoa PB</option>
+                    <option value="Curitiba PR">Curitiba PR</option>
+                    <option value="Recife PE">Recife PE</option>
+                    <option value="Teresina PI">Teresina PI</option>
+                    <option value="Rio de Janeiro RJ">Rio de Janeiro RJ</option>
+                    <option value="Natal RN">Natal RN</option>
+                    <option value="Porto Alegre RS">Porto Alegre RS</option>
+                    <option value="Porto Velho RO">Porto Velho RO</option>
+                    <option value="Boa Vista RR">Boa Vista RR</option>
+                    <option value="Florianópolis SC">Florianópolis SC</option>
+                    <option value="São Paulo SP">São Paulo SP</option>
+                    <option value="Aracaju SE">Aracaju SE</option>
+                    <option value="Palmas TO">Palmas TO</option>
+                </select>   
+                    <!-- Adicione as opções aqui -->
+            
+                <label for="operacao">Operação:</label>
+                <select id="operacao" name="operacao">
+                    <option value="AB - BRASIL">AB  BRASIL</option>
+                            <option value="APREENDIDO">APREENDIDO</option>
+                            <option value="BAU - AVULSO">BAU - AVULSO</option>
+                            <option value="ESTOQUE">ESTOQUE</option>
+                            <option value="BAU - CORREIOS">BAU - CORREIOS</option>
+                            <option value="FRIGO - MARFRIG">FRIGO - MARFRIG</option>
+                            <option value="BAU - ES">BAU - ES</option>
+                            <option value="BAU - HEINEKEN">BAU - HEINEKEN</option>
+                            <option value="BAU - PUXE CARRETA">BAU - PUXE CARRETA</option>
+                            <option value="BAU - RECIFE">BAU - RECIFE</option>
+                            <option value="BAU - WICKBOLD">BAU - WICKBOLD</option>
+                            <option value="BIMBO - MANOBRA">BIMBO - MANOBRA</option>
+                            <option value="BIMBO - VIAGEM">BIMBO - VIAGEM</option>
+                            <option value="BITREM - AVULSO">BITREM - AVULSO</option>
+                            <option value="BITREM - CABOT">BITREM - CABOT</option>
+                            <option value="CIRC.NESTLÉ - BAU">CIRC.NESTLÉ - BAU</option>
+                            <option value="DEDICADO BAU - ACHE">DEDICADO BAU - ACHE</option>
+                            <option value="DEDICADO BAU - CUIABÁ">DEDICADO BAU - CUIABÁ</option>
+                            <option value="DEDICADO BIG - CAJAMAR">DEDICADO BIG - CAJAMAR</option>
+                            <option value="DEDICADO BIMBO - MOGI">DEDICADO BIMBO - MOGI</option>
+                            <option value="DEDICADO BIMBO - RAPOSO">DEDICADO BIMBO - RAPOSO</option>
+                            <option value="DEDICADO CARREFOUR - CDA">DEDICADO CARREFOUR - CDA</option>
+                            <option value="DEDICADO MOBLY">DEDICADO MOBLY</option>
+                            <option value="DEDICADO PROCTER - P&G">DEDICADO PROCTER - P&G</option>
+                            <option value="DEDICADO UNILEVER - BRASALPLA">DEDICADO UNILEVER - BRASALPLA</option>
+                            <option value="DEDICADO UNILEVER - INDAIA BITREM">DEDICADO UNILEVER - INDAIA BITREM</option>
+                            <option value="DEDICADO UNILEVER - KLABIN">DEDICADO UNILEVER - KLABIN</option>
+                            <option value="DEDICADO UNILEVER - LOUVEIRA">DEDICADO UNILEVER - LOUVEIRA</option>
+                            <option value="DEDICADO UNILEVER - POUSO">DEDICADO UNILEVER - POUSO</option>
+                            <option value="DEDICADO UNILEVER - TRUCK">DEDICADO UNILEVER - TRUCK</option>
+                            <option value="FRIGO - AVULSO">FRIGO - AVULSO</option>
+                            <option value="FRIGO - CONTAINER">FRIGO - CONTAINER</option>
+                            <option value="FRIGO - ES">FRIGO - ES</option>
+                            <option value="FRIGO - SEARA">FRIGO - SEARA</option>
+                            <option value="FRIGO - URBANO">FRIGO - URBANO</option>
+                            <option value="FRIGO NESTLÉ - CIRC. 22">FRIGO NESTLÉ - CIRC. 22</option>
+                            <option value="LEITE - FAZENDA">LEITE - FAZENDA</option>
+                            <option value="LOGGI - TRUCK">LOGGI - TRUCK</option>
+                            <option value="MANUNTEÇÃO">MANUNTEÇÃO</option>
+                            <option value="MANUTENÇÃO">MANUTENÇÃO</option>
+                            <option value="MERCADO - LIVRE">MERCADO - LIVRE</option>
+                            <option value="PATIO">PATIO</option>
+                            <option value="SOTREQ">SOTREQ</option>
+                            <option value="WICKBOLD - DEDICADO">WICKBOLD - DEDICADO</option>
+
+                    <!-- Adicione as opções aqui -->
+                </select>
+
+                <label for="tempoRisco">Tempo Risco:</label>
+                <input type="text" id="tempoRisco" name="tempoRisco" maxlength="5" oninput="formatarTempoRisco(this)">
+
+                <label for="descricaoOcorrencia">Descrição da Ocorrência:</label>
+                <textarea id="descricaoOcorrencia" name="descricaoOcorrencia"></textarea>
+
+                <button type="button" id="addAtendimentoBtn" onclick="iniciarAtendimento()">Iniciar Atendimento</button>
+            </form>
+        </div>
+
+        <!-- Painel de Status Atual -->
+        <div class="panel" id="statusPanel">
+            <h2>PAINEL DE STATUS</h2>
+            <div id="atendimentoStatus" class="status-list"></div>
+        </div>
+    </div>
+
+    <script src="MCD.js"></script>
+
+    <div id="confirmacaoModal" class="modal">
+        <div class="modal-content">
+            <p>Tem certeza que deseja encerrar o atendimento?</p>
+            <button id="confirmarFinalizar">Sim, finalizar</button>
+            <button id="cancelarFinalizar" onclick="document.getElementById('confirmacaoModal').style.display='none'">Cancelar</button>
+        </div>
+    </div>
+</body>
+</html>
